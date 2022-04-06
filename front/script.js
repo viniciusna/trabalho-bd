@@ -28,3 +28,15 @@ function postMed() {
     .then( data => console.log(data))
     .catch( err => console.log(err))
 }
+
+function putMed() {
+    const options = {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({table: 'medics', values: [1, 'Daniela', 'ddiscombe4@fda.gov', '2977834771', '14/07/2021']})
+    }
+
+    fetch("http://localhost:8000/putForms", options)
+    .then( data => console.log(data))
+    .catch( err => console.log(err))
+}
