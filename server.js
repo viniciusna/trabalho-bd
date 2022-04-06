@@ -33,6 +33,17 @@ app.get('/getForms', function (req, res) {
     })
 })
 
+//objeto -> { table: 'nome da tabela', values: ['valores aqui, em ordem'] }
+//exemplo -> { table: medics, values: [1, joao, joao@gg.com, 12345678, 30/05/2020, null] }
+
+function defineInsertion(obj) {
+    let query = {values: obj.values}
+
+    if (obj.table === appointments){
+        query.text = 'INSERT INTO appointments VALUES ()'
+    }
+}
+
 app.post('/postForms', async function insertCustomer(req, res) {
     const { name, email, phone } = req.body;
     const query = {
