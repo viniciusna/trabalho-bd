@@ -48,6 +48,18 @@ function postMed() {
     .catch(err => console.log(err));
 }
 
+function putPat() {
+  const options = {
+    method: "PUT",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ table: "patients", values: [1, "Daniela", 22, "ddiscombe4@fda.gov", "2977834771", "rua lacombe", 34, "01145678907", "14/07/2021"] }),
+  };
+
+  fetch("http://localhost:8000/putForms", options)
+    .then(data => console.log(data))
+    .catch(err => console.log(err));
+}
+
 function putMed() {
   const options = {
     method: "PUT",

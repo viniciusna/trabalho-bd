@@ -101,7 +101,7 @@ function defineUpdate(obj) {
   } else if (obj.table === "medics") {
     query.text = "UPDATE medics SET name = $2, email = $3, phone = $4, registration_date = $5 WHERE id = $1";
   } else if (obj.table === "patients") {
-    query.text = "UPDATE patients SET ";
+    query.text = "UPDATE patients SET name = $2, age = $3, email = $4, cep = $5, address = $6, house_number = $7, phone = $8, last_update = $9 WHERE id = $1";
   }
 
   return query;
