@@ -7,10 +7,10 @@ import pkg from 'pg';
 const { Pool } = pkg;
 
 const config = {
-user: 'postgres',
-database: 'forms',
-password: '33564017xd', //Coloca a senha do seu user do postres
-port: 5432
+    user: 'postgres',
+    database: 'forms',
+    password: 'salsichao123', //Coloca a senha do seu user do postres
+    port: 5432
 };
 const pool = new Pool(config);
 
