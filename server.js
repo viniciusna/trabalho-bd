@@ -2,25 +2,29 @@ const express = require('express')
 const app = express()
 const cors = require('cors')
 const fs = require('fs')
-import pkg from 'pg';
+const pkg = require('pg');
 
 const { Pool } = pkg;
 
 const config = {
-    user: 'postgres',
-    database: 'forms',
-    password: 'salsichao123', //Coloca a senha do seu user do postres
+    user: 'postgres', //seu usuário
+    database: 'clinicalControl', //nome do banco de dados no seu postre aí
+    password: '', //Coloca a senha do seu user do postres
     port: 5432
 };
 const pool = new Pool(config);
 
-app.get('/getForms', function (req, res) {
+app.get('/', (req, res) => {
+    res.send('batata')
+})
+
+app.get('/getMedics', function (req, res) {
     pool.connect(function (err, client, done) {
         if (err) {
             console.log("Can not connect to the DB" + err);
         }
 
-        client.query('SELECT * FROM public.forms ORDER BY id ASC', function (err, result) {
+        pool.query('SELECT * FROM public.medics ORDER BY id ASC', function (err, result) {
             done();
             if (err) {
                 console.log(err);
@@ -33,6 +37,43 @@ app.get('/getForms', function (req, res) {
     })
 })
 
+app.get('/getPatients', function (req, res) {
+    pool.connect(function (err, client, done) {
+        if (err) {
+            console.log("Can not connect to the DB" + err);
+        }
+
+        pool.query('SELECT * FROM public.patients ORDER BY id ASC', function (err, result) {
+            done();
+            if (err) {
+                console.log(err);
+                res.status(400).send(err);
+            }
+
+            let obj = result.rows;
+            res.status(200).send(obj);
+        })
+    })
+})
+
+app.get('/getAppointments', function (req, res) {
+    pool.connect(function (err, client, done) {
+        if (err) {
+            console.log("Can not connect to the DB" + err);
+        }
+
+        pool.query('SELECT * FROM public.appointments ORDER BY id ASC', function (err, result) {
+            done();
+            if (err) {
+                console.log(err);
+                res.status(400).send(err);
+            }
+
+            let obj = result.rows;
+            res.status(200).send(obj);
+        })
+    })
+})
 //objeto -> { table: 'nome da tabela', values: ['valores aqui, em ordem'] }
 //exemplo -> { table: medics, values: [1, joao, joao@gg.com, 12345678, 30/05/2020, null] }
 
