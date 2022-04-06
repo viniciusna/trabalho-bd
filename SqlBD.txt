@@ -1,0 +1,177 @@
+CREATE TABLE public.medics (
+	"id" serial NOT NULL,
+	"name" varchar(200) NOT NULL,
+	"email" varchar(100) NOT NULL,
+	"phone" varchar(11) NOT NULL,
+	"registration_date" DATE NOT NULL,
+	"deleted" bool,
+	CONSTRAINT "medics_pk" PRIMARY KEY ("id")
+) WITH (
+  OIDS=FALSE
+);
+
+
+
+CREATE TABLE public.patients (
+	"id" serial NOT NULL,
+	"name" varchar(200) NOT NULL,
+	"age" int NOT NULL,
+	"email" varchar(50) NOT NULL,
+	"cep" varchar(8) NOT NULL,
+	"address" varchar(100) NOT NULL,
+	"house_number" int NOT NULL,
+	"phone" varchar(11) NOT NULL,
+	"id_last_appointments" int NOT NULL UNIQUE,
+	"last_update" DATE NOT NULL,
+	"deletion_date" DATE NOT NULL,
+	CONSTRAINT "patients_pk" PRIMARY KEY ("id")
+) WITH (
+  OIDS=FALSE
+);
+
+
+
+CREATE TABLE public.specializations (
+	"id" serial NOT NULL,
+	"id_specialities" int NOT NULL,
+	"id_medic" int NOT NULL,
+	CONSTRAINT "specializations_pk" PRIMARY KEY ("id")
+) WITH (
+  OIDS=FALSE
+);
+
+
+
+CREATE TABLE public.appointments (
+	"id" serial NOT NULL,
+	"id_medic" int NOT NULL,
+	"id_patient" int NOT NULL,
+	"date" DATE NOT NULL,
+	"time_init" TIME NOT NULL,
+	"time_end" TIME NOT NULL,
+	"price" DECIMAL(5,2) NOT NULL,
+	"return" int,
+	"status" varchar(15),
+	"id_room" int NOT NULL,
+	CONSTRAINT "appointments_pk" PRIMARY KEY ("id")
+) WITH (
+  OIDS=FALSE
+);
+
+
+
+CREATE TABLE public.rooms (
+	"id" serial NOT NULL,
+	"room_name" varchar(5) NOT NULL,
+	"last_appointment" int NOT NULL,
+	"id_cleaner" int NOT NULL,
+	"last_cleaning" TIMESTAMP NOT NULL,
+	CONSTRAINT "rooms_pk" PRIMARY KEY ("id")
+) WITH (
+  OIDS=FALSE
+);
+
+
+
+CREATE TABLE public.exams_patients (
+	"id" serial NOT NULL,
+	"id_appointments" int NOT NULL,
+	"id_exams" int NOT NULL,
+	"id_results" int,
+	CONSTRAINT "exams_patients_pk" PRIMARY KEY ("id")
+) WITH (
+  OIDS=FALSE
+);
+
+
+
+CREATE TABLE public.exams (
+	"id" serial NOT NULL,
+	"exam_type" varchar(100) NOT NULL,
+	"exam_name" varchar(100) NOT NULL,
+	CONSTRAINT "exams_pk" PRIMARY KEY ("id")
+) WITH (
+  OIDS=FALSE
+);
+
+
+
+CREATE TABLE public.results (
+	"id" serial NOT NULL,
+	"result" varchar(255),
+	CONSTRAINT "results_pk" PRIMARY KEY ("id")
+) WITH (
+  OIDS=FALSE
+);
+
+
+
+CREATE TABLE public.cleaners (
+	"id" serial NOT NULL,
+	"name" varchar(100) NOT NULL,
+	CONSTRAINT "cleaners_pk" PRIMARY KEY ("id")
+) WITH (
+  OIDS=FALSE
+);
+
+
+
+CREATE TABLE public.prices (
+	"id" int NOT NULL,
+	"id_specializations" int NOT NULL,
+	"price" DECIMAL NOT NULL,
+	CONSTRAINT "prices_pk" PRIMARY KEY ("id")
+) WITH (
+  OIDS=FALSE
+);
+
+
+
+CREATE TABLE public.specialties (
+	"id" int NOT NULL,
+	"speciality_type" varchar(50) NOT NULL UNIQUE,
+	CONSTRAINT "specialties_pk" PRIMARY KEY ("id")
+) WITH (
+  OIDS=FALSE
+);
+
+
+
+CREATE TABLE public.accounts (
+	"id" int NOT NULL,
+	"id_medic" int,
+	"id_patient" int,
+	"username" varchar(50) NOT NULL UNIQUE,
+	"password" varchar(50) NOT NULL,
+	"plan" varchar(10) NOT NULL,
+	CONSTRAINT "accounts_pk" PRIMARY KEY ("id")
+) WITH (
+  OIDS=FALSE
+);
+
+
+
+
+
+ALTER TABLE "specializations" ADD CONSTRAINT "specializations_fk0" FOREIGN KEY ("id_specialities") REFERENCES "specialties"("id");
+ALTER TABLE "specializations" ADD CONSTRAINT "specializations_fk1" FOREIGN KEY ("id_medic") REFERENCES "medics"("id");
+
+ALTER TABLE "appointments" ADD CONSTRAINT "appointments_fk0" FOREIGN KEY ("id_medic") REFERENCES "medics"("id");
+ALTER TABLE "appointments" ADD CONSTRAINT "appointments_fk1" FOREIGN KEY ("id_patient") REFERENCES "patients"("id");
+ALTER TABLE "appointments" ADD CONSTRAINT "appointments_fk2" FOREIGN KEY ("return") REFERENCES "appointments"("id");
+ALTER TABLE "appointments" ADD CONSTRAINT "appointments_fk3" FOREIGN KEY ("id_room") REFERENCES "rooms"("id");
+
+ALTER TABLE "rooms" ADD CONSTRAINT "rooms_fk0" FOREIGN KEY ("last_appointment") REFERENCES "appointments"("id");
+ALTER TABLE "rooms" ADD CONSTRAINT "rooms_fk1" FOREIGN KEY ("id_cleaner") REFERENCES "cleaners"("id");
+
+ALTER TABLE "exams_patients" ADD CONSTRAINT "exams_patients_fk0" FOREIGN KEY ("id_appointments") REFERENCES "appointments"("id");
+ALTER TABLE "exams_patients" ADD CONSTRAINT "exams_patients_fk1" FOREIGN KEY ("id_exams") REFERENCES "exams"("id");
+ALTER TABLE "exams_patients" ADD CONSTRAINT "exams_patients_fk2" FOREIGN KEY ("id_results") REFERENCES "results"("id");
+
+
+
+ALTER TABLE "prices" ADD CONSTRAINT "prices_fk0" FOREIGN KEY ("id_specializations") REFERENCES "specializations"("id");
+
+
+ALTER TABLE "accounts" ADD CONSTRAINT "accounts_fk0" FOREIGN KEY ("id_medic") REFERENCES "medics"("id");
+ALTER TABLE "accounts" ADD CONSTRAINT "accounts_fk1" FOREIGN KEY ("id_patient") REFERENCES "patients"("id");
