@@ -1,42 +1,61 @@
 function searchPatients() {
-    fetch('http://localhost:8000/getPatients')
-    .then(resp => resp.json()).then(data => console.log(data))
-    .catch(err => console.log(err))
+  fetch("http://localhost:8000/getPatients")
+    .then(resp => resp.json())
+    .then(data => console.log(data))
+    .catch(err => console.log(err));
 }
 
 function searchMedics() {
-    fetch('http://localhost:8000/getMedics')
-    .then(resp => resp.json()).then(data => console.log(data))
-    .catch(err => console.log(err))
+  fetch("http://localhost:8000/getMedics")
+    .then(resp => resp.json())
+    .then(data => console.log(data))
+    .catch(err => console.log(err));
 }
 
 function searchApp() {
-    fetch('http://localhost:8000/getAppointments')
-    .then(resp => resp.json()).then(data => console.log(data))
-    .catch(err => console.log(err))
+  fetch("http://localhost:8000/getAppointments")
+    .then(resp => resp.json())
+    .then(data => console.log(data))
+    .catch(err => console.log(err));
+}
+
+function postPat() {
+  //name, age, email, cep, address, house_number, phone, id_last_appointments, last_update
+  const options = {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      table: "patients",
+      values: [3, "Stace", 26, "sdomini1@smugmug.com", "881", "42862 Merry Way", 41, "4263706274", 0, "20/05/2021", "07/04/2021"],
+    }),
+  };
+
+  fetch("http://localhost:8000/postForms", options)
+    .then(data => console.log(data))
+    .catch(err => console.log(err));
 }
 
 function postMed() {
-    //name, email, phone, registration_date
-    const options = {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({table: 'medics', values: [1, 'Daniela Discombe', 'ddiscombe4@fda.gov', '2977834771', '14/07/2021']})
-    }
+  //name, email, phone, registration_date
+  const options = {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ table: "medics", values: [1, "Daniela Discombe", "ddiscombe4@fda.gov", "2977834771", "14/07/2021"] }),
+  };
 
-    fetch("http://localhost:8000/postForms", options)
-    .then( data => console.log(data))
-    .catch( err => console.log(err))
+  fetch("http://localhost:8000/postForms", options)
+    .then(data => console.log(data))
+    .catch(err => console.log(err));
 }
 
 function putMed() {
-    const options = {
-        method: 'PUT',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({table: 'medics', values: [1, 'Daniela', 'ddiscombe4@fda.gov', '2977834771', '14/07/2021']})
-    }
+  const options = {
+    method: "PUT",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ table: "medics", values: [1, "Daniela", "ddiscombe4@fda.gov", "2977834771", "14/07/2021"] }),
+  };
 
-    fetch("http://localhost:8000/putForms", options)
-    .then( data => console.log(data))
-    .catch( err => console.log(err))
+  fetch("http://localhost:8000/putForms", options)
+    .then(data => console.log(data))
+    .catch(err => console.log(err));
 }
