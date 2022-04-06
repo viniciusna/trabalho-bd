@@ -52,7 +52,7 @@ function putPat() {
   const options = {
     method: "PUT",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ table: "patients", values: [1, "Daniela", 22, "ddiscombe4@fda.gov", "2977834771", "rua lacombe", 34, "01145678907", "14/07/2021"] }),
+    body: JSON.stringify({ table: "patients", values: [1, "Daniela", 22, "ddiscombe4@fda.gov", "890", "rua lacombe", 34, "4263706274", "14/07/2021"] }),
   };
 
   fetch("http://localhost:8000/putForms", options)
@@ -68,6 +68,18 @@ function putMed() {
   };
 
   fetch("http://localhost:8000/putForms", options)
+    .then(data => console.log(data))
+    .catch(err => console.log(err));
+}
+
+function deletePat() {
+  const options = {
+    method: "DELETE",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ table: "patients", values: [1] }),
+  };
+
+  fetch("http://localhost:8000/deleteForms", options)
     .then(data => console.log(data))
     .catch(err => console.log(err));
 }

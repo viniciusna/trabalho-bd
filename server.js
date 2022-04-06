@@ -107,6 +107,20 @@ function defineUpdate(obj) {
   return query;
 }
 
+function defineDelete(obj) {
+  let query = { values: obj.values };
+
+  if (obj.table === "appointments") {
+    query.text = "DELETE FROM appointments WHERE id = $1";
+  } else if (obj.table === "medics") {
+    query.text = "DELETE FROM medics WHERE id = $1";
+  } else if (obj.table === "patients") {
+    query.text = "DELETE FROM patients WHERE id = $1";
+  }
+
+  return query;
+}
+
 //POST funfando
 app.post("/postForms", async function insertCustomer(req, res) {
   const query = defineInsertion(req.body);
@@ -147,11 +161,14 @@ app.put("/putForms", async function updateCustomer(req, res) {
 });
 
 app.delete("/deleteForms", async function deleteCustomer(req, res) {
-  const { id } = req.body;
-  const query = {
-    text: "DELETE FROM public.forms WHERE id = $1",
-    values: [id],
-  };
+  const query = defineDelete(req.body);
+  console.log(query);
+
+  // const { name, email, phone } = req.body;
+  // const query = {
+  //     text: 'INSERT INTO public.forms(name, email, phone) VALUES($1, $2, $3)',
+  //     values: [name, email, parseInt(phone)]
+  // };
 
   try {
     await pool.query(query);
