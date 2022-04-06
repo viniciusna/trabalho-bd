@@ -9,14 +9,12 @@ const { Pool } = pkg;
 const config = {
     user: 'postgres', //seu usuário
     database: 'clinicalControl', //nome do banco de dados no seu postre aí
-    password: '', //Coloca a senha do seu user do postres
+    password: '1978', //Coloca a senha do seu user do postres
     port: 5432
 };
 const pool = new Pool(config);
 
-app.get('/', (req, res) => {
-    res.send('batata')
-})
+app.use(express.static('front'))
 
 app.get('/getMedics', function (req, res) {
     pool.connect(function (err, client, done) {
@@ -74,6 +72,7 @@ app.get('/getAppointments', function (req, res) {
         })
     })
 })
+
 //objeto -> { table: 'nome da tabela', values: ['valores aqui, em ordem'] }
 //exemplo -> { table: medics, values: [1, joao, joao@gg.com, 12345678, 30/05/2020, null] }
 
@@ -102,13 +101,13 @@ app.post('/postForms', async function insertCustomer(req, res) {
     //     values: [name, email, parseInt(phone)]
     // };
 
-    // try {
-    //     await pool.query(query);
-    //     res.status(200).send('Form inserted');
-    // } catch (err) {
-    //     console.log(err);
-    //     res.status(400).send(err);
-    // }
+    try {
+        await pool.query(query);
+        res.status(200).send('Form inserted');
+    } catch (err) {
+        console.log(err);
+        res.status(400).send(err);
+    }
 })
 
 app.put('/putForms', async function updateCustomer(req, res) {
