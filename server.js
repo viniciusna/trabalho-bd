@@ -39,25 +39,35 @@ app.get('/getForms', function (req, res) {
 function defineInsertion(obj) {
     let query = {values: obj.values}
 
-    if (obj.table === appointments){
-        query.text = 'INSERT INTO appointments VALUES ()'
+    if (obj.table === 'appointments'){
+        query.text = 'INSERT INTO appointments VALUES ($1, $2, $3, $4, $5, $6, $7, $8)'
+    } else if (obj.table === 'medics') {
+        query.text = 'INSERT INTO appointments VALUES ($1, $2, $3, $4, $5)'
+    } else if (obj.table === 'patients') {
+        query.text = 'INSERT INTO appointments VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11)'
     }
+
+    return query
 }
 
 app.post('/postForms', async function insertCustomer(req, res) {
-    const { name, email, phone } = req.body;
-    const query = {
-        text: 'INSERT INTO public.forms(name, email, phone) VALUES($1, $2, $3)',
-        values: [name, email, parseInt(phone)]
-    };
 
-    try {
-        await pool.query(query);
-        res.status(200).send('Form inserted');
-    } catch (err) {
-        console.log(err);
-        res.status(400).send(err);
-    }
+    const query = defineInsertion(req.body)
+    console.log(query)
+
+    // const { name, email, phone } = req.body;
+    // const query = {
+    //     text: 'INSERT INTO public.forms(name, email, phone) VALUES($1, $2, $3)',
+    //     values: [name, email, parseInt(phone)]
+    // };
+
+    // try {
+    //     await pool.query(query);
+    //     res.status(200).send('Form inserted');
+    // } catch (err) {
+    //     console.log(err);
+    //     res.status(400).send(err);
+    // }
 })
 
 app.put('/putForms', async function updateCustomer(req, res) {
