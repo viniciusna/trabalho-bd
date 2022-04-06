@@ -4,6 +4,9 @@ const cors = require('cors')
 const fs = require('fs')
 const pkg = require('pg');
 
+app.use(express.json());
+app.use(express.urlencoded({extended: true}));
+
 const { Pool } = pkg;
 
 const config = {
@@ -92,8 +95,10 @@ function defineInsertion(obj) {
 
 app.post('/postForms', async function insertCustomer(req, res) {
 
-    const query = defineInsertion(req.body)
-    console.log(query)
+    console.log(req.body)
+
+    // const query = defineInsertion(req.body)
+    // console.log(query)
 
     // const { name, email, phone } = req.body;
     // const query = {
@@ -101,13 +106,13 @@ app.post('/postForms', async function insertCustomer(req, res) {
     //     values: [name, email, parseInt(phone)]
     // };
 
-    try {
-        await pool.query(query);
-        res.status(200).send('Form inserted');
-    } catch (err) {
-        console.log(err);
-        res.status(400).send(err);
-    }
+    // try {
+    //     await pool.query(query);
+    //     res.status(200).send('Form inserted');
+    // } catch (err) {
+    //     console.log(err);
+    //     res.status(400).send(err);
+    // }
 })
 
 app.put('/putForms', async function updateCustomer(req, res) {
