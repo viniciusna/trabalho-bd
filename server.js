@@ -85,20 +85,33 @@ function defineInsertion(obj) {
     if (obj.table === 'appointments'){
         query.text = 'INSERT INTO appointments VALUES ($1, $2, $3, $4, $5, $6, $7, $8)'
     } else if (obj.table === 'medics') {
-        query.text = 'INSERT INTO appointments VALUES ($1, $2, $3, $4, $5)'
+        query.text = 'INSERT INTO medics VALUES ($1, $2, $3, $4, $5)'
     } else if (obj.table === 'patients') {
-        query.text = 'INSERT INTO appointments VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11)'
+        query.text = 'INSERT INTO patients VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11)'
     }
 
     return query
 }
 
+function defineUpdate(obj) {
+    let query = {values: obj.values}
+
+    if (obj.table === 'appointments'){
+        query.text = 'UPDATE appointments SET '
+    } else if (obj.table === 'medics') {
+        query.text = 'UPDATE medics SET '
+    } else if (obj.table === 'patients') {
+        query.text = 'UPDATE patients SET '
+    }
+
+    return query
+}
+
+//POST funfando
 app.post('/postForms', async function insertCustomer(req, res) {
 
-    console.log(req.body)
-
-    // const query = defineInsertion(req.body)
-    // console.log(query)
+    const query = defineInsertion(req.body)
+    console.log(query)
 
     // const { name, email, phone } = req.body;
     // const query = {
@@ -106,21 +119,25 @@ app.post('/postForms', async function insertCustomer(req, res) {
     //     values: [name, email, parseInt(phone)]
     // };
 
-    // try {
-    //     await pool.query(query);
-    //     res.status(200).send('Form inserted');
-    // } catch (err) {
-    //     console.log(err);
-    //     res.status(400).send(err);
-    // }
+    try {
+        await pool.query(query);
+        res.status(200).send('Form inserted');
+    } catch (err) {
+        console.log(err);
+        res.status(400).send(err);
+    }
 })
 
 app.put('/putForms', async function updateCustomer(req, res) {
-    const { id, name, email, phone } = req.body;
-    const query = {
-        text: 'UPDATE public.forms SET name = $1, email = $2, phone = $3 WHERE id = $4',
-        values: [name, email, parseInt(phone), id]
-    };
+
+    const query = defineUpdate(req.body)
+    console.log(query)
+
+    // const { id, name, email, phone } = req.body;
+    // const query = {
+    //     text: 'UPDATE public.forms SET name = $1, email = $2, phone = $3 WHERE id = $4',
+    //     values: [name, email, parseInt(phone), id]
+    // };
 
     try {
     await pool.query(query);
