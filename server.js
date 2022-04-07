@@ -97,7 +97,7 @@ function defineUpdate(obj) {
   let query = { values: obj.values };
 
   if (obj.table === "appointments") {
-    query.text = "UPDATE appointments SET ";
+    query.text = "UPDATE appointments SET id_medic = $2, id_patient = $3, date = $4, time_init = $5, time_end = $6, price = $7, status = $8 WHERE id = $1";
   } else if (obj.table === "medics") {
     query.text = "UPDATE medics SET name = $2, email = $3, phone = $4, registration_date = $5 WHERE id = $1";
   } else if (obj.table === "patients") {
