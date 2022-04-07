@@ -11,8 +11,8 @@ const { Pool } = pkg;
 
 const config = {
   user: "postgres", //seu usuário
-  database: "clinicalcontrol", //nome do banco de dados no seu postre aí
-  password: "Brasil10a", //Coloca a senha do seu user do postres
+  database: "clinicalControl", //nome do banco de dados no seu postre aí
+  password: "1978", //Coloca a senha do seu user do postres
   port: 5432,
 };
 const pool = new Pool(config);
@@ -121,7 +121,6 @@ function defineDelete(obj) {
   return query;
 }
 
-//POST funfando
 app.post("/postForms", async function insertCustomer(req, res) {
   const query = defineInsertion(req.body);
   console.log(query);

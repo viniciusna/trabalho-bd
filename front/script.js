@@ -83,3 +83,15 @@ function deletePat() {
     .then(data => console.log(data))
     .catch(err => console.log(err));
 }
+
+function deleteMed() {
+    const options = {
+      method: "DELETE",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ table: "medics", values: [1] }),
+    };
+  
+    fetch("http://localhost:8000/deleteForms", options)
+      .then(data => console.log(data))
+      .catch(err => console.log(err));
+  }
