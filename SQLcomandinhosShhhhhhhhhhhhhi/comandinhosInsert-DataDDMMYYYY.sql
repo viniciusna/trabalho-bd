@@ -139,8 +139,8 @@ insert into appointments (id_medic, id_patient, date, time_init, time_end, price
 insert into appointments (id_medic, id_patient, date, time_init, time_end, price, status) values (8, 92, '08/02/2022', '2:49 PM', '9:55 AM', 34.56, 'Pink');
 insert into appointments (id_medic, id_patient, date, time_init, time_end, price, status) values (6, 73, '07/11/2021', '11:22 AM', '1:19 PM', 149.52, 'Aquamarine');
 insert into appointments (id_medic, id_patient, date, time_init, time_end, price, status) values (3, 37, '16/11/2021', '6:50 PM', '7:22 PM', 51.48, 'Mauv');
-insert into appointments (id_medic, id_patient, date, time_init, time_end, price, status) values (0, 69, '25/04/2021', '5:06 PM', '8:39 AM', 28.38, 'Blue');
-insert into appointments (id_medic, id_patient, date, time_init, time_end, price, status) values (0, 32, '16/09/2021', '8:22 AM', '4:25 AM', 120.46, 'Violet');
+insert into appointments (id_medic, id_patient, date, time_init, time_end, price, status) values (1, 69, '25/04/2021', '5:06 PM', '8:39 AM', 28.38, 'Blue');
+insert into appointments (id_medic, id_patient, date, time_init, time_end, price, status) values (1, 32, '16/09/2021', '8:22 AM', '4:25 AM', 120.46, 'Violet');
 insert into appointments (id_medic, id_patient, date, time_init, time_end, price, status) values (11, 32, '16/12/2021', '2:17 AM', '4:44 AM', 11.61, 'Puce');
 insert into appointments (id_medic, id_patient, date, time_init, time_end, price, status) values (16, 17, '30/08/2021', '6:58 AM', '9:10 AM', 148.81, 'Turquoise');
 insert into appointments (id_medic, id_patient, date, time_init, time_end, price, status) values (20, 53, '08/09/2021', '9:32 AM', '9:46 AM', 186.91, 'Yellow');
@@ -175,7 +175,7 @@ insert into appointments (id_medic, id_patient, date, time_init, time_end, price
 insert into appointments (id_medic, id_patient, date, time_init, time_end, price, status) values (14, 91, '26/03/2022', '5:59 PM', '12:26 PM', 141.59, 'Turquoise');
 insert into appointments (id_medic, id_patient, date, time_init, time_end, price, status) values (10, 85, '22/04/2021', '11:51 AM', '3:02 PM', 180.1, 'Indigo');
 insert into appointments (id_medic, id_patient, date, time_init, time_end, price, status) values (9, 83, '08/03/2022', '12:39 PM', '10:35 AM', 156.84, 'Khaki');
-insert into appointments (id_medic, id_patient, date, time_init, time_end, price, status) values (0, 61, '04/11/2021', '4:46 AM', '11:58 PM', 14.12, 'Purple');
+insert into appointments (id_medic, id_patient, date, time_init, time_end, price, status) values (1, 61, '04/11/2021', '4:46 AM', '11:58 PM', 14.12, 'Purple');
 insert into appointments (id_medic, id_patient, date, time_init, time_end, price, status) values (3, 3, '18/09/2021', '3:46 AM', '3:33 AM', 133.74, 'Aquamarine');
 insert into appointments (id_medic, id_patient, date, time_init, time_end, price, status) values (3, 65, '08/12/2021', '11:41 PM', '12:31 PM', 71.96, 'Green');
 insert into appointments (id_medic, id_patient, date, time_init, time_end, price, status) values (20, 11, '22/01/2022', '7:43 PM', '7:32 PM', 105.05, 'Blue');
@@ -184,8 +184,8 @@ insert into appointments (id_medic, id_patient, date, time_init, time_end, price
 insert into appointments (id_medic, id_patient, date, time_init, time_end, price, status) values (17, 43, '02/09/2021', '4:02 AM', '9:50 PM', 30.7, 'Khaki');
 insert into appointments (id_medic, id_patient, date, time_init, time_end, price, status) values (11, 90, '21/01/2022', '3:53 PM', '2:51 AM', 31.16, 'Yellow');
 insert into appointments (id_medic, id_patient, date, time_init, time_end, price, status) values (20, 81, '03/01/2022', '3:59 PM', '10:51 AM', 118.75, 'Pink');
-insert into appointments (id_medic, id_patient, date, time_init, time_end, price, status) values (0, 38, '03/10/2021', '5:56 PM', '8:00 AM', 11.82, 'Red');
-insert into appointments (id_medic, id_patient, date, time_init, time_end, price, status) values (3, 0, '30/04/2021', '3:34 AM', '8:31 PM', 32.01, 'Teal');
+insert into appointments (id_medic, id_patient, date, time_init, time_end, price, status) values (1, 38, '03/10/2021', '5:56 PM', '8:00 AM', 11.82, 'Red');
+insert into appointments (id_medic, id_patient, date, time_init, time_end, price, status) values (3, 1, '30/04/2021', '3:34 AM', '8:31 PM', 32.01, 'Teal');
 insert into appointments (id_medic, id_patient, date, time_init, time_end, price, status) values (4, 92, '15/10/2021', '3:25 AM', '8:31 AM', 70.96, 'Indigo');
 insert into appointments (id_medic, id_patient, date, time_init, time_end, price, status) values (11, 11, '05/11/2021', '1:12 AM', '2:08 PM', 10.59, 'Violet');
 insert into appointments (id_medic, id_patient, date, time_init, time_end, price, status) values (3, 45, '26/11/2021', '2:10 PM', '1:36 AM', 138.77, 'Purple');
@@ -202,13 +202,13 @@ insert into appointments (id_medic, id_patient, date, time_init, time_end, price
 insert into appointments (id_medic, id_patient, date, time_init, time_end, price, status) values (3, 49, '12/03/2022', '8:09 PM', '7:11 AM', 181.63, 'Puce');
 insert into appointments (id_medic, id_patient, date, time_init, time_end, price, status) values (8, 5, '02/10/2021', '5:35 PM', '6:27 PM', 155.94, 'Indigo');
 insert into appointments (id_medic, id_patient, date, time_init, time_end, price, status) values (8, 14, '17/05/2021', '2:51 AM', '4:24 AM', 80.48, 'Orange');
-insert into appointments (id_medic, id_patient, date, time_init, time_end, price, status) values (0, 96, '07/12/2021', '6:28 PM', '2:11 AM', 150.46, 'Red');
+insert into appointments (id_medic, id_patient, date, time_init, time_end, price, status) values (1, 96, '07/12/2021', '6:28 PM', '2:11 AM', 150.46, 'Red');
 insert into appointments (id_medic, id_patient, date, time_init, time_end, price, status) values (11, 10, '05/09/2021', '4:15 PM', '10:34 AM', 159.19, 'Fuscia');
 insert into appointments (id_medic, id_patient, date, time_init, time_end, price, status) values (14, 34, '28/05/2021', '9:46 PM', '8:43 PM', 145.83, 'Purple');
 insert into appointments (id_medic, id_patient, date, time_init, time_end, price, status) values (9, 57, '18/05/2021', '10:25 PM', '1:51 AM', 68.97, 'Teal');
 insert into appointments (id_medic, id_patient, date, time_init, time_end, price, status) values (20, 84, '02/04/2022', '9:20 AM', '5:03 PM', 89.11, 'Orange');
 insert into appointments (id_medic, id_patient, date, time_init, time_end, price, status) values (14, 83, '24/08/2021', '11:15 AM', '11:39 AM', 86.74, 'Indigo');
-insert into appointments (id_medic, id_patient, date, time_init, time_end, price, status) values (0, 32, '17/01/2022', '9:35 PM', '10:07 AM', 173.09, 'Purple');
+insert into appointments (id_medic, id_patient, date, time_init, time_end, price, status) values (1, 32, '17/01/2022', '9:35 PM', '10:07 AM', 173.09, 'Purple');
 insert into appointments (id_medic, id_patient, date, time_init, time_end, price, status) values (9, 91, '07/01/2022', '10:43 AM', '4:07 PM', 47.64, 'Purple');
 insert into appointments (id_medic, id_patient, date, time_init, time_end, price, status) values (11, 12, '09/01/2022', '2:48 AM', '2:33 PM', 4.17, 'Aquamarine');
 insert into appointments (id_medic, id_patient, date, time_init, time_end, price, status) values (11, 18, '10/11/2021', '8:35 AM', '6:06 PM', 126.78, 'Violet');
@@ -217,7 +217,7 @@ insert into appointments (id_medic, id_patient, date, time_init, time_end, price
 insert into appointments (id_medic, id_patient, date, time_init, time_end, price, status) values (17, 66, '04/12/2021', '12:34 PM', '3:52 PM', 161.89, 'Yellow');
 insert into appointments (id_medic, id_patient, date, time_init, time_end, price, status) values (12, 74, '12/08/2021', '11:03 PM', '5:05 AM', 175.01, 'Maroon');
 insert into appointments (id_medic, id_patient, date, time_init, time_end, price, status) values (18, 6, '04/06/2021', '2:13 PM', '12:46 PM', 190.02, 'Fuscia');
-insert into appointments (id_medic, id_patient, date, time_init, time_end, price, status) values (0, 80, '05/05/2021', '2:29 PM', '2:24 AM', 49.46, 'Yellow');
+insert into appointments (id_medic, id_patient, date, time_init, time_end, price, status) values (1, 80, '05/05/2021', '2:29 PM', '2:24 AM', 49.46, 'Yellow');
 insert into appointments (id_medic, id_patient, date, time_init, time_end, price, status) values (20, 75, '08/08/2021', '2:51 AM', '10:08 PM', 113.15, 'Purple');
 insert into appointments (id_medic, id_patient, date, time_init, time_end, price, status) values (18, 86, '23/03/2022', '1:41 AM', '6:21 PM', 157.78, 'Aquamarine');
 insert into appointments (id_medic, id_patient, date, time_init, time_end, price, status) values (3, 90, '16/10/2021', '6:55 PM', '6:43 AM', 49.64, 'Puce');
